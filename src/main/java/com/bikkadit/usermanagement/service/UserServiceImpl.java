@@ -206,4 +206,39 @@ public class UserServiceImpl implements UserServiceI {
 
 	}
 
+	private String getForgotEmailBody(UserAccount userAccount) {
+		StringBuffer sb = new StringBuffer();
+		String fileName = "FORGOT-PASSWORD.txt";
+		List<String> lines = new ArrayList<>();
+
+		try {
+			BufferedReader br = Files.newBufferedReader(Paths.get(fileName));
+			lines = br.lines().collect(Collectors.toList());
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+		lines.forEach(line -> {
+			if (line.contains("{FNAME}")) {
+				line.replace("{FNAME}", userAccount.getUserFirstName());
+			}
+			if (line.contains("{LNAME}")) {
+				line.replace("{LNAME}", userAccount.getUserLastName());
+			}
+			if (line.contains("{PWD}")) {
+				line.replace("{PWD}", userAccount.getUserPassword());
+			}
+
+			sb.append(line);
+
+		});
+
+		return sb.toString();
+
+	}
+
+	
+	
+	
 }
