@@ -1,7 +1,9 @@
 package com.bikkadit.usermanagement.bindings;
 
-public class LoginCheck {
 
+public class LoginForm {
+
+	
 	private String userEmail;
 	
 	private String userPassword;
