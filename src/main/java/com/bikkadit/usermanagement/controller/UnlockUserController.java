@@ -14,5 +14,14 @@ public class UnlockUserController {
 	@Autowired
 	private UserServiceI userServiceI;
 	
-	
+	@GetMapping("/unlockAccount")
+	public String unlockAccount(@RequestBody UnlockAccountForm unlockAccountForm) {
+		boolean unlockAccount = userServiceI.unlockAccount(unlockAccountForm);
+		if(unlockAccount) {
+			return "ACCOUNT UNLOCKED";
+		}
+		return "FAILED TO UNLOCK";
+		
+	}
+
 }
