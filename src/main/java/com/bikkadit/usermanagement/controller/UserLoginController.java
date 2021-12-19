@@ -14,5 +14,9 @@ public class UserLoginController {
 	@Autowired
 	private UserServiceI userServiceI;
 	
-	
+	@GetMapping("/login")
+	public String login(@RequestBody LoginForm loginForm) {
+		return userServiceI.loginCheck(loginForm);
+	}
+
 }
