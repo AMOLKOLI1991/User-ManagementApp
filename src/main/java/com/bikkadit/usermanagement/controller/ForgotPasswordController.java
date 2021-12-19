@@ -14,5 +14,9 @@ public class ForgotPasswordController {
 	@Autowired
 	private UserServiceI userServiceI;
 	
-	
+	@GetMapping("/forgotPwd/{userEmail}")
+	public String forgotPwd(@PathVariable String userEmail ) {
+		return userServiceI.forgotPwd(userEmail);
+	}
+
 }
